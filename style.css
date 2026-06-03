@@ -5,6 +5,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&display=swap');
 
+/* ── Принудительно светлая тема ─────────────── */
+:root { color-scheme: only light; }
+
 /* ── Reset ─────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
