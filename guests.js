@@ -12,7 +12,7 @@
 
 const GUESTS = {
 
-  "ËЛКА": {
+  "ЕЛКА": {
     name: "Ëлка",
     emoji: "✨",
     message: `
@@ -54,15 +54,6 @@ const GUESTS = {
     `
   },
 
-  "GUEST-006": {
-    name: "Гость 6",
-    emoji: "⭐",
-    message: `
-      <p>Привет!</p>
-      <p>Текст личного приглашения для гостя 6...</p>
-    `
-  },
-
 };
 
 
@@ -90,7 +81,7 @@ const WISHLIST_ITEMS = [
   { id: "w6", label: "Ободок для волос", link: "https://www.ozon.ru/product/obodok-dlya-volos-zhenskiy-1410939389/" },
   { id: "w7", label: "Букет сухоцветов", link: "https://www.ozon.ru/product/buket-suhotsvetov-dlya-dekora-v-vazu-trava-decor-pampasnaya-trava-pshenitsa-lavanda-1421668526/" },
   { id: "w8", label: "Мармелад", link: "https://www.ozon.ru/product/zhevatelnyy-marmelad-1-kg-bolshaya-korobka-sladostey-1439565404/" },
-  { id: "w9", label: "Баскетбольный мяч", link: "https://www.ozon.ru/product/myach-basketbolnyy-7-razmera-street-1582000090/" },
+  { id: "w9", label: "Мист", link: "https://ozon.ru/t/d7yt6eK" },
   { id: "w10", label: "Носочки", link: "https://www.ozon.ru/product/noski-nicenonice-zhenskie-classic-1-para-1755629309/" },
   { id: "w11", label: "Носочки", link: "https://www.ozon.ru/product/noski-nicenonice-zhenskie-classic-1-para-1755629352/" },
   { id: "w12", label: "Носочки", link: "https://www.ozon.ru/product/noski-nicenonice-zhenskie-classic-1-para-1755632378/" },
@@ -108,8 +99,7 @@ const WISHLIST_ITEMS = [
   { id: "w24", label: "Кремовый зефир", link: "https://www.ozon.ru/product/kremovyy-zefir-marshmallow-fluff-s-vanilnym-vkusom-213-gr-3386233581/" },
   { id: "w25", label: "Патчи для глаз", link: "https://www.ozon.ru/product/gidrogelevye-antivozrastnye-patchi-dlya-glaz-ot-otekov-meshkov-i-morshchin-sadoer-zhidkie-vitaminnye-3502736853/" },
   { id: "w26", label: "Блендер погружной", link: "https://www.ozon.ru/product/marta-blender-pogruzhnoy-1500-vt-s-izmelchitelem-i-venchikom-dlya-vzbivaniya-supov-smuzi-3559724178/" },
-  { id: "w27", label: "Пояс", link: "https://www.ozon.ru/product/life-style-travel-poyas-1082-3612910063/" },
-  { id: "w28", label: "Набор для выращивания трав", link: "https://www.ozon.ru/product/nabor-dlya-vyrashchivaniya-trav-dlya-chaya-na-podokonnike-chaynyy-sad-domashniy-ogorod-semena-3836798025/" },
-  { id: "w29", label: "Мармелад желейный", link: "https://www.ozon.ru/product/marmelad-zheleynyy-s-chia-fruktovyy-500-gr-4180181495/" },
-  { id: "w30", label: "Рельефный чехол", link: "https://www.ozon.ru/product/relefnyy-chehol-s-printom-serdtsa-na-samsung-a35-5g-dlya-samsung-a35-5g-4269671178/" },
+  { id: "w27", label: "Набор для выращивания трав", link: "https://www.ozon.ru/product/nabor-dlya-vyrashchivaniya-trav-dlya-chaya-na-podokonnike-chaynyy-sad-domashniy-ogorod-semena-3836798025/" },
+  { id: "w28", label: "Мармелад желейный", link: "https://www.ozon.ru/product/marmelad-zheleynyy-s-chia-fruktovyy-500-gr-4180181495/" },
+  { id: "w29", label: "Рельефный чехол", link: "https://www.ozon.ru/product/relefnyy-chehol-s-printom-serdtsa-na-samsung-a35-5g-dlya-samsung-a35-5g-4269671178/" },
 ];
