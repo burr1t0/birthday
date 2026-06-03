@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎀 Твоё приглашение</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { padding: 2rem 1rem 5rem; }
+
+    /* ── Confetti layer ── */
+    #confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .cp {
+      position: absolute;
+      top: -40px;
+      animation: confettiFall linear infinite;
+    }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Header ── */
+    .inv-header {
+      text-align: center;
+      padding: 2rem 0 1.5rem;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .inv-cat {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+      animation: popIn 0.85s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;
+    }
+    .inv-greeting {
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      color: var(--p4);
+      margin-bottom: 0.25rem;
+    }
+    .inv-from {
+      color: var(--text-mid);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    /* ── Message card ── */
+    .msg-card {
+      background: white;
+      border: 3px solid var(--p2);
+      border-radius: var(--r-xl);
+      box-shadow: var(--s3), 0 0 0 8px rgba(255,179,209,0.15);
+      padding: 2.5rem;
+      margin-bottom: 1.4rem;
+      animation: fadeInUp 0.65s ease 0.18s both;
+    }
+    .msg-text {
+      font-size: 1.07rem;
+      line-height: 1.85;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .msg-text p { margin-bottom: 0.8rem; }
+    .msg-text p:last-child { margin-bottom: 0; }
+
+    /* ── Party details card ── */
+    .party-card {
+      background: linear-gradient(145deg, #FFF0F8, #FFE2F1);
+      border: 3px solid var(--p2);
+      border-radius: var(--r-lg);
+      box-shadow: var(--s2);
+      padding: 2rem;
+      margin-bottom: 1.4rem;
+      animation: fadeInUp 0.65s ease 0.32s both;
+    }
+    .party-h {
+      font-size: 1.5rem;
+      color: var(--p4);
+      text-align: center;
+      margin-bottom: 1.4rem;
+    }
+    .party-rows { display: flex; flex-direction: column; gap: 0.85rem; }
+    .party-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      border-radius: var(--r);
+      padding: 0.9rem 1.2rem;
+      box-shadow: var(--s1);
+    }
+    .party-icon { font-size: 1.6rem; width: 38px; text-align: center; flex-shrink: 0; }
+    .party-lbl {
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-light);
+      margin-bottom: 0.1rem;
+    }
+    .party-val { font-size: 1rem; font-weight: 700; color: var(--text); }
+
+    /* ── Wishlist CTA ── */
+    .wish-cta {
+      text-align: center;
+      animation: fadeInUp 0.65s ease 0.46s both;
+    }
+    .wish-cta p {
+      color: var(--text-mid);
+      font-weight: 700;
+      font-size: 0.97rem;
+      margin-bottom: 0.85rem;
+    }
+
+    /* ── Bottom cats ── */
+    .bottom-cats {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0.2rem;
+      margin-top: 2.5rem;
+      animation: fadeInUp 0.65s ease 0.6s both;
+    }
+    .bc { animation: catFloat 4s ease-in-out infinite; }
+    .bc:nth-child(2) { animation-name: catFloatB; animation-delay: 0.35s; }
+    .bc:nth-child(3) { animation-name: catFloatC; animation-delay: 0.7s;  }
+  </style>
+</head>
+<body>
+  <div class="page-bg"></div>
+  <div id="confetti"></div>
+
+  <div class="wrap">
+    <div class="inv-header">
+      <div class="inv-cat" id="invCat"></div>
+      <h1 class="inv-greeting">
+        Привет, <span id="gName">…</span>! <span id="gEmoji">🎀</span>
+      </h1>
+      <p class="inv-from">Тебя приглашает <strong id="hostName">…</strong></p>
+    </div>
+
+    <div class="msg-card">
+      <div class="msg-text" id="msg">…</div>
+    </div>
+
+    <div class="party-card">
+      <h2 class="party-h">Детали вечеринки 🐾</h2>
+      <div class="party-rows">
+        <div class="party-row">
+          <div class="party-icon">🗓️</div>
+          <div><div class="party-lbl">Дата</div><div class="party-val" id="pDate">…</div></div>
+        </div>
+        <div class="party-row">
+          <div class="party-icon">⏰</div>
+          <div><div class="party-lbl">Время</div><div class="party-val" id="pTime">…</div></div>
+        </div>
+        <div class="party-row">
+          <div class="party-icon">📍</div>
+          <div><div class="party-lbl">Место</div><div class="party-val" id="pLoc">…</div></div>
+        </div>
+        <div class="party-row">
+          <div class="party-icon">🗺️</div>
+          <div><div class="party-lbl">Адрес</div><div class="party-val" id="pAddr">…</div></div>
+        </div>
+        <div class="party-row" id="noteRow" style="display:none">
+          <div class="party-icon">💌</div>
+          <div><div class="party-lbl">Примечание</div><div class="party-val" id="pNote">…</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wish-cta">
+      <p>Загляни в вишлист, можно что-нибудь подарить 🌸</p>
+      <a href="wishlist.html" class="btn">К виш-листу 🎁</a>
+    </div>
+
+    <div class="bottom-cats">
+      <div class="bc" id="bc1"></div>
+      <div class="bc" id="bc2"></div>
+      <div class="bc" id="bc3"></div>
+    </div>
+  </div>
+
+  <script src="guests.js"></script>
+  <script src="cats.js"></script>
+  <script>
+    // ── Auth guard ─────────────────────────────
+    const key = sessionStorage.getItem('bday_guest');
+    if (!key || !GUESTS[key]) { window.location.href = 'index.html'; }
+
+    const g = GUESTS[key];
+    const p = PARTY;
+
+    // ── Fill ────────────────────────────────────
+    document.getElementById('gName').textContent    = g.name;
+    document.getElementById('gEmoji').textContent   = g.emoji;
+    document.getElementById('hostName').textContent = p.hostName;
+    document.getElementById('msg').innerHTML        = g.message;
+    document.getElementById('pDate').textContent    = p.date;
+    document.getElementById('pTime').textContent    = p.time;
+    document.getElementById('pLoc').textContent     = p.location;
+    document.getElementById('pAddr').textContent    = p.address;
+
+    if (p.note) {
+      document.getElementById('pNote').textContent = p.note;
+      document.getElementById('noteRow').style.display = 'flex';
+    }
+
+    // ── Cats ────────────────────────────────────
+    document.getElementById('invCat').innerHTML = CAT_VARIANTS[1](118);
+    document.getElementById('bc1').innerHTML    = CAT_VARIANTS[0](68);
+    document.getElementById('bc2').innerHTML    = CAT_VARIANTS[3](80);
+    document.getElementById('bc3').innerHTML    = CAT_VARIANTS[2](68);
+
+    // ── Confetti ────────────────────────────────
+    (function spawnConfetti() {
+      const layer  = document.getElementById('confetti');
+      const PIECES = ['🌸','💕','✨','🎀','🐱','⭐','🩷','🫧','🌙'];
+      for (let i = 0; i < 24; i++) {
+        const el = document.createElement('div');
+        el.className = 'cp';
+        el.textContent = PIECES[Math.floor(Math.random() * PIECES.length)];
+        el.style.left            = (Math.random() * 100) + '%';
+        el.style.fontSize        = (0.9 + Math.random() * 1.3) + 'rem';
+        el.style.animationDuration = (4 + Math.random() * 7) + 's';
+        el.style.animationDelay  = (Math.random() * 5) + 's';
+        layer.appendChild(el);
+      }
+    })();
+  </script>
+</body>
+</html>

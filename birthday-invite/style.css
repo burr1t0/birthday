@@ -1,0 +1,154 @@
+/* ════════════════════════════════════════════════
+   Birthday Invite — Общие стили
+   Шрифты: Pacifico (заголовки) + Nunito (текст)
+════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ── Reset ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── CSS Variables ──────────────────────────── */
+:root {
+  --bg:         #FFF0F8;
+  --bg-card:    #FFFFFF;
+  --p1:         #FFD6E8;
+  --p2:         #FFB3D1;
+  --p3:         #FF85A1;
+  --p4:         #FF4D8D;
+  --p5:         #C81A63;
+  --text:       #3D1025;
+  --text-mid:   #8B3A5C;
+  --text-light: #C585A0;
+
+  --s1: 0 4px 16px rgba(255,77,141,0.13);
+  --s2: 0 8px 32px rgba(255,77,141,0.22);
+  --s3: 0 18px 52px rgba(255,77,141,0.30);
+
+  --r:    24px;
+  --r-lg: 36px;
+  --r-xl: 48px;
+  --pill: 9999px;
+}
+
+/* ── Base ───────────────────────────────────── */
+html, body {
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: 'Pacifico', cursive; line-height: 1.25; }
+
+/* ── Background gradient ────────────────────── */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(255,179,209,0.45) 0%, transparent 52%),
+    radial-gradient(ellipse at 85% 75%, rgba(237,214,255,0.35) 0%, transparent 52%),
+    radial-gradient(ellipse at 50% 50%, #FFF5FA 0%, #FFE4F0 100%);
+  z-index: -2;
+}
+
+/* Subtle dot pattern overlay */
+.page-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,107,157,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Card ───────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 3px solid var(--p2);
+  border-radius: var(--r-xl);
+  box-shadow: var(--s3), 0 0 0 8px rgba(255,179,209,0.18);
+  padding: 2.5rem;
+}
+
+/* ── Button ─────────────────────────────────── */
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--p3), var(--p4));
+  color: #fff;
+  border: none;
+  border-radius: var(--pill);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 0.9rem 2.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--s2);
+  transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.btn:hover  { transform: translateY(-3px) scale(1.04); box-shadow: var(--s3); }
+.btn:active { transform: scale(0.97); }
+
+/* ── Animations ─────────────────────────────── */
+
+/* Floating cats */
+@keyframes catFloat {
+  0%,100% { transform: translateY(0)    rotate(-2.5deg); }
+  50%     { transform: translateY(-14px) rotate(2.5deg);  }
+}
+@keyframes catFloatB {
+  0%,100% { transform: translateY(0)    rotate(3deg); }
+  50%     { transform: translateY(-10px) rotate(-3deg); }
+}
+@keyframes catFloatC {
+  0%,100% { transform: translateY(-6px) rotate(-4deg) scale(1);    }
+  50%     { transform: translateY(6px)  rotate(4deg)  scale(1.03); }
+}
+
+/* Page entrances */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+@keyframes popIn {
+  0%  { opacity: 0; transform: scale(0) rotate(-12deg); }
+  65% { transform: scale(1.12) rotate(4deg); }
+  100%{ opacity: 1; transform: scale(1)   rotate(0deg);  }
+}
+
+/* Wrong-code shake */
+@keyframes shake {
+  0%,100% { transform: translateX(0);  }
+  18%     { transform: translateX(-9px); }
+  38%     { transform: translateX(9px);  }
+  56%     { transform: translateX(-6px); }
+  76%     { transform: translateX(6px);  }
+}
+
+/* Success flash */
+@keyframes successFlash {
+  0%   { opacity: 0; }
+  25%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Confetti */
+@keyframes confettiFall {
+  0%   { transform: translateY(-40px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(110vh) rotate(660deg); opacity: 0; }
+}
+
+/* Wishlist taken stamp */
+@keyframes stampIn {
+  0%  { transform: scale(2.2) rotate(-8deg); opacity: 0; }
+  60% { transform: scale(0.9) rotate(2deg);  opacity: 1; }
+  100%{ transform: scale(1)   rotate(0deg);  opacity: 1; }
+}
+
+/* ── Scrollbar ──────────────────────────────── */
+::-webkit-scrollbar       { width: 8px; }
+::-webkit-scrollbar-track { background: var(--p1); }
+::-webkit-scrollbar-thumb { background: var(--p3); border-radius: 99px; }
